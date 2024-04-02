@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Generator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Recipe Generator</h1>
+    <label for="ingredients">Enter your ingredients:</label>
+    <textarea id="ingredients" rows="4" cols="50"></textarea>
+    <button id="generateBtn">Generate Recipe</button>
+    <div id="recipeOutput"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#generateBtn').click(function () {
+                var ingredients = $('#ingredients').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '/generateRecipe',
+                    data: { ingredients: ingredients },
+                    success: function (response) {
+                        $('#recipeOutput').html(response);
+                    },
+                    error: function (error) {
+                        console.error('Error:', error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

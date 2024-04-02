@@ -1,4 +1,6 @@
 /* eslint-disable linebreak-style */
+
+
 function addTask() {
   const taskInput = document.getElementById('taskInput');
   const taskText = taskInput.value.trim();
